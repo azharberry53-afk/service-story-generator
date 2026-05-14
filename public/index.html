@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Story Generator - Azhar Berry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d2137 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            background: linear-gradient(90deg, #00b4d8, #0077b6, #00b4d8);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+            margin-bottom: 8px;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 200% center; }
+        }
+
+        .header p {
+            color: #7eb8d0;
+            font-size: 1em;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.1em;
+            color: #00b4d8;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 180, 216, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-row.single {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.85em;
+            color: #8ab4c7;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group label .required {
+            color: #ff6b6b;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #00b4d8;
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #5a7a8a;
+        }
+
+        .form-group input[type="file"] {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]::-webkit-file-upload-button {
+            padding: 6px 16px;
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.85em;
+            margin-right: 10px;
+        }
+
+        .staff-section {
+            background: rgba(0, 180, 216, 0.05);
+            border: 1px solid rgba(0, 180, 216, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .staff-label {
+            font-size: 0.9em;
+            color: #00b4d8;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .location-display {
+            padding: 10px 14px;
+            background: rgba(0, 180, 216, 0.1);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 8px;
+            color: #00b4d8;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-generate {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.3);
+        }
+
+        .btn-generate:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-generate.loading {
+            background: linear-gradient(135deg, #555, #777);
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result-card.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-title {
+            font-size: 1.2em;
+            color: #00b4d8;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .story-text {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            line-height: 1.8;
+            color: #d0d0d0;
+            font-size: 0.95em;
+            white-space: pre-wrap;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .story-text::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .story-text::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .story-text::-webkit-scrollbar-thumb {
+            background: rgba(0, 180, 216, 0.3);
+            border-radius: 3px;
+        }
+
+        .btn-copy {
+            margin-top: 15px;
+            padding: 10px 24px;
+            background: rgba(0, 180, 216, 0.2);
+            border: 1px solid rgba(0, 180, 216, 0.4);
+            border-radius: 8px;
+            color: #00b4d8;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-copy:hover {
+            background: rgba(0, 180, 216, 0.3);
+        }
+
+        .success-badge {
+            display: none;
+            background: rgba(0, 200, 83, 0.15);
+            border: 1px solid rgba(0, 200, 83, 0.3);
+            border-radius: 8px;
+            padding: 12px 20px;
+            color: #00c853;
+            margin-top: 15px;
+            font-size: 0.9em;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .success-badge.show {
+            display: flex;
+        }
+
+        .error-msg {
+            display: none;
+            background: rgba(255, 82, 82, 0.15);
+            border: 1px solid rgba(255, 82, 82, 0.3);
+            border-radius: 8px;
+            padding: 12px 20px;
+            color: #ff5252;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .error-msg.show {
+            display: block;
+        }
+
+        .image-preview-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .image-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid rgba(0, 180, 216, 0.3);
+            display: none;
+        }
+
+        .image-preview.show {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.6em;
+            }
+            .container {
+                padding: 10px;
+            }
+            .form-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚇 Service Story Generator</h1>
+            <p>Woodlands North MRT Station</p>
+        </div>
+
+        <form id="storyForm" enctype="multipart/form-data">
+            <!-- Incident Details -->
+            <div class="form-card">
+                <div class="section-title">📋 Incident Details</div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date <span class="required">*</span></label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Time <span class="required">*</span></label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Location</label>
+                        <div class="location-display">
+                            📍 Woodlands North MRT Station
+                        </div>
+                        <input type="hidden" name="location" value="Woodlands North MRT Station">
+                    </div>
+                    <div class="form-group">
+                        <label>Lost Item <span class="required">*</span></label>
+                        <input type="text" id="lostItem" name="lostItem" placeholder="e.g. Bag, Handphone, Wallet" required>
+                    </div>
+                </div>
+
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label>Passenger Name <span class="required">*</span></label>
+                        <div style="display:flex;gap:10px;">
+                            <select name="passengerTitle" id="passengerTitle" style="width:100px;" required>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Mdm">Mdm</option>
+                            </select>
+                            <input type="text" id="passengerName" name="passengerName" placeholder="Full Name" style="flex:1;" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff Details -->
+            <div class="form-card">
+                <div class="section-title">👥 Staff Details</div>
+
+                <!-- Staff 1 - Required -->
+                <div class="staff-section">
+                    <div class="staff-label">Staff 1 <span class="required">* (Required)</span></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Staff Name</label>
+                            <input type="text" name="staffName1" id="staffName1" placeholder="e.g. ASM Azhar" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Staff ID (Numbers Only)</label>
+                            <input type="text" name="staffId1" id="staffId1" placeholder="e.g. 12345" pattern="[0-9]*" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff 2 - Optional -->
+                <div class="staff-section">
+                    <div class="staff-label">Staff 2 (Optional)</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Staff Name</label>
+                            <input type="text" name="staffName2" id="staffName2" placeholder="e.g. ASM Azhar">
+                        </div>
+                        <div class="form-group">
+                            <label>Staff ID (Numbers Only)</label>
+                            <input type="text" name="staffId2" id="staffId2" placeholder="e.g. 12345" pattern="[0-9]*">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff 3 - Optional -->
+                <div class="staff-section">
+                    <div class="staff-label">Staff 3 (Optional)</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Staff Name</label>
+                            <input type="text" name="staffName3" id="staffName3" placeholder="e.g. ASM Azhar">
+                        </div>
+                        <div class="form-group">
+                            <label>Staff ID (Numbers Only)</label>
+                            <input type="text" name="staffId3" id="staffId3" placeholder="e.g. 12345" pattern="[0-9]*">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff 4 - Optional -->
+                <div class="staff-section">
+                    <div class="staff-label">Staff 4 (Optional)</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Staff Name</label>
+                            <input type="text" name="staffName4" id="staffName4" placeholder="e.g. ASM Azhar">
+                        </div>
+                        <div class="form-group">
+                            <label>Staff ID (Numbers Only)</label>
+                            <input type="text" name="staffId4" id="staffId4" placeholder="e.g. 12345" pattern="[0-9]*">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Uploads -->
+            <div class="form-card">
+                <div class="section-title">📸 Photo Uploads</div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Passenger Photo (JPG) <span class="required">*</span></label>
+                        <input type="file" name="passengerPhoto" id="passengerPhoto" accept="image/jpeg,image/jpg,image/png" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Compliment Letter (JPG) <span class="required">*</span></label>
+                        <input type="file" name="complimentLetter" id="complimentLetter" accept="image/jpeg,image/jpg,image/png" required>
+                    </div>
+                </div>
+
+                <div class="image-preview-container">
+                    <img id="previewPassenger" class="image-preview" alt="Passenger Photo Preview">
+                    <img id="previewCompliment" class="image-preview" alt="Compliment Letter Preview">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-generate" id="btnGenerate">
+                <span id="btnText">✨ Generate Service Story</span>
+                <div class="spinner" id="spinner"></div>
+            </button>
+        </form>
+
+        <!-- Error Message -->
+        <div class="error-msg" id="errorMsg"></div>
+
+        <!-- Result -->
+        <div class="result-card" id="resultCard">
+            <div class="result-title">📖 Generated Service Story</div>
+            <div class="story-text" id="storyText"></div>
+            <button class="btn-copy" onclick="copyStory()">📋 Copy Story</button>
+            <div class="success-badge show" id="successBadge">
+                ✅ Story saved to Google Sheet successfully!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set today's date as default
+        document.getElementById('date').valueAsDate = new Date();
+
+        // Set current time as default
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('time').value = `${hours}:${minutes}`;
+
+        // Image preview for passenger photo
+        document.getElementById('passengerPhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const img = document.getElementById('previewPassenger');
+                    img.src = ev.target.result;
+                    img.classList.add('show');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Image preview for compliment letter
+        document.getElementById('complimentLetter').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    const img = document.getElementById('previewCompliment');
+                    img.src = ev.target.result;
+                    img.classList.add('show');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Staff ID - numbers only validation
+        document.querySelectorAll('[name^="staffId"]').forEach(input => {
+            input.addEventListener('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+        });
+
+        // Form submission
+        document.getElementById('storyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('btnGenerate');
+            const btnText = document.getElementById('btnText');
+            const spinner = document.getElementById('spinner');
+            const errorMsg = document.getElementById('errorMsg');
+            const resultCard = document.getElementById('resultCard');
+
+            // Reset
+            errorMsg.classList.remove('show');
+            resultCard.classList.remove('show');
+
+            // Loading state
+            btn.disabled = true;
+            btn.classList.add('loading');
+            btnText.textContent = 'Generating Story...';
+            spinner.style.display = 'block';
+
+            try {
+                const formData = new FormData(this);
+
+                const response = await fetch('/api/generate', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to generate story');
+                }
+
+                // Show result
+                document.getElementById('storyText').textContent = data.story;
+                resultCard.classList.add('show');
+
+                // Scroll to result
+                resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            } catch (error) {
+                errorMsg.textContent = '❌ Error: ' + error.message;
+                errorMsg.classList.add('show');
+            } finally {
+                btn.disabled = false;
+                btn.classList.remove('loading');
+                btnText.textContent = '✨ Generate Service Story';
+                spinner.style.display = 'none';
+            }
+        });
+
+        function copyStory() {
+            const text = document.getElementById('storyText').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    btn.textContent = '📋 Copy Story';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
