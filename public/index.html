@@ -162,6 +162,24 @@
             gap: 8px;
         }
 
+        /* ── Dropdown select option color fix ── */
+        .form-group select option {
+            background: #1a2a4a;
+            color: #e0e0e0;
+        }
+
+        .form-group select option:disabled {
+            color: #5a7a8a;
+        }
+
+        /* ── Read-only auto-filled fields ── */
+        .form-group input[readonly] {
+            background: rgba(0, 180, 216, 0.08);
+            border-color: rgba(0, 180, 216, 0.25);
+            color: #7eb8d0;
+            cursor: default;
+        }
+
         .btn-generate {
             width: 100%;
             padding: 14px;
@@ -356,7 +374,10 @@
         </div>
 
         <form id="storyForm" enctype="multipart/form-data">
-            <!-- Incident Details -->
+
+            <!-- ═══════════════════════════════════════ -->
+            <!--           INCIDENT DETAILS              -->
+            <!-- ═══════════════════════════════════════ -->
             <div class="form-card">
                 <div class="section-title">📋 Incident Details</div>
 
@@ -401,72 +422,181 @@
                 </div>
             </div>
 
-            <!-- Staff Details -->
+            <!-- ═══════════════════════════════════════ -->
+            <!--            STAFF DETAILS                -->
+            <!-- ═══════════════════════════════════════ -->
             <div class="form-card">
                 <div class="section-title">👥 Staff Details</div>
 
-                <!-- Staff 1 - Required -->
+                <!-- ── Staff 1 - Required ── -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 1 <span class="required">* (Required)</span></div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Select Staff <span class="required">*</span></label>
+                            <select id="staffSelect1" onchange="populateStaff(1)">
+                                <option value="" disabled selected>-- Select Staff --</option>
+                                <option value="29348|SSM Sam">SSM Sam</option>
+                                <option value="28784|SM Zann">SM Zann</option>
+                                <option value="30801|SM Kamhani">SM Kamhani</option>
+                                <option value="30979|ASM Azhar">ASM Azhar</option>
+                                <option value="32182|ASM Redhuan">ASM Redhuan</option>
+                                <option value="32636|ASM Zulfiqha">ASM Zulfiqha</option>
+                                <option value="34837|ASM Yayah">ASM Yayah</option>
+                                <option value="35674|ASM Jaya">ASM Jaya</option>
+                                <option value="35678|ASM Nidhan">ASM Nidhan</option>
+                                <option value="36986|ASM Suga">ASM Suga</option>
+                                <option value="37141|ASM Farouk">ASM Farouk</option>
+                                <option value="37160|ASM Tivek">ASM Tivek</option>
+                                <option value="37237|ASM Daniel">ASM Daniel</option>
+                                <option value="37276|ASM Zamri">ASM Zamri</option>
+                                <option value="37295|ASM Uvanraj">ASM Uvanraj</option>
+                                <option value="38799|ASM Amirul">ASM Amirul</option>
+                                <option value="38841|ASM Afidah">ASM Afidah</option>
+                                <option value="98044|ASM Salihin">ASM Salihin</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName1" id="staffName1" placeholder="e.g. ASM Azhar" required>
+                            <input type="text" name="staffName1" id="staffName1" placeholder="Auto-filled from dropdown" readonly required>
                         </div>
                         <div class="form-group">
-                            <label>Staff ID (Numbers Only)</label>
-                            <input type="text" name="staffId1" id="staffId1" placeholder="e.g. 12345" pattern="[0-9]*" required>
+                            <label>Staff ID</label>
+                            <input type="text" name="staffId1" id="staffId1" placeholder="Auto-filled from dropdown" readonly required>
                         </div>
                     </div>
                 </div>
 
-                <!-- Staff 2 - Optional -->
+                <!-- ── Staff 2 - Optional ── -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 2 (Optional)</div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Select Staff</label>
+                            <select id="staffSelect2" onchange="populateStaff(2)">
+                                <option value="" selected>-- Select Staff --</option>
+                                <option value="29348|SSM Sam">SSM Sam</option>
+                                <option value="28784|SM Zann">SM Zann</option>
+                                <option value="30801|SM Kamhani">SM Kamhani</option>
+                                <option value="30979|ASM Azhar">ASM Azhar</option>
+                                <option value="32182|ASM Redhuan">ASM Redhuan</option>
+                                <option value="32636|ASM Zulfiqha">ASM Zulfiqha</option>
+                                <option value="34837|ASM Yayah">ASM Yayah</option>
+                                <option value="35674|ASM Jaya">ASM Jaya</option>
+                                <option value="35678|ASM Nidhan">ASM Nidhan</option>
+                                <option value="36986|ASM Suga">ASM Suga</option>
+                                <option value="37141|ASM Farouk">ASM Farouk</option>
+                                <option value="37160|ASM Tivek">ASM Tivek</option>
+                                <option value="37237|ASM Daniel">ASM Daniel</option>
+                                <option value="37276|ASM Zamri">ASM Zamri</option>
+                                <option value="37295|ASM Uvanraj">ASM Uvanraj</option>
+                                <option value="38799|ASM Amirul">ASM Amirul</option>
+                                <option value="38841|ASM Afidah">ASM Afidah</option>
+                                <option value="98044|ASM Salihin">ASM Salihin</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName2" id="staffName2" placeholder="e.g. ASM Azhar">
+                            <input type="text" name="staffName2" id="staffName2" placeholder="Auto-filled from dropdown" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Staff ID (Numbers Only)</label>
-                            <input type="text" name="staffId2" id="staffId2" placeholder="e.g. 12345" pattern="[0-9]*">
+                            <label>Staff ID</label>
+                            <input type="text" name="staffId2" id="staffId2" placeholder="Auto-filled from dropdown" readonly>
                         </div>
                     </div>
                 </div>
 
-                <!-- Staff 3 - Optional -->
+                <!-- ── Staff 3 - Optional ── -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 3 (Optional)</div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Select Staff</label>
+                            <select id="staffSelect3" onchange="populateStaff(3)">
+                                <option value="" selected>-- Select Staff --</option>
+                                <option value="29348|SSM Sam">SSM Sam</option>
+                                <option value="28784|SM Zann">SM Zann</option>
+                                <option value="30801|SM Kamhani">SM Kamhani</option>
+                                <option value="30979|ASM Azhar">ASM Azhar</option>
+                                <option value="32182|ASM Redhuan">ASM Redhuan</option>
+                                <option value="32636|ASM Zulfiqha">ASM Zulfiqha</option>
+                                <option value="34837|ASM Yayah">ASM Yayah</option>
+                                <option value="35674|ASM Jaya">ASM Jaya</option>
+                                <option value="35678|ASM Nidhan">ASM Nidhan</option>
+                                <option value="36986|ASM Suga">ASM Suga</option>
+                                <option value="37141|ASM Farouk">ASM Farouk</option>
+                                <option value="37160|ASM Tivek">ASM Tivek</option>
+                                <option value="37237|ASM Daniel">ASM Daniel</option>
+                                <option value="37276|ASM Zamri">ASM Zamri</option>
+                                <option value="37295|ASM Uvanraj">ASM Uvanraj</option>
+                                <option value="38799|ASM Amirul">ASM Amirul</option>
+                                <option value="38841|ASM Afidah">ASM Afidah</option>
+                                <option value="98044|ASM Salihin">ASM Salihin</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName3" id="staffName3" placeholder="e.g. ASM Azhar">
+                            <input type="text" name="staffName3" id="staffName3" placeholder="Auto-filled from dropdown" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Staff ID (Numbers Only)</label>
-                            <input type="text" name="staffId3" id="staffId3" placeholder="e.g. 12345" pattern="[0-9]*">
+                            <label>Staff ID</label>
+                            <input type="text" name="staffId3" id="staffId3" placeholder="Auto-filled from dropdown" readonly>
                         </div>
                     </div>
                 </div>
 
-                <!-- Staff 4 - Optional -->
+                <!-- ── Staff 4 - Optional ── -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 4 (Optional)</div>
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>Select Staff</label>
+                            <select id="staffSelect4" onchange="populateStaff(4)">
+                                <option value="" selected>-- Select Staff --</option>
+                                <option value="29348|SSM Sam">SSM Sam</option>
+                                <option value="28784|SM Zann">SM Zann</option>
+                                <option value="30801|SM Kamhani">SM Kamhani</option>
+                                <option value="30979|ASM Azhar">ASM Azhar</option>
+                                <option value="32182|ASM Redhuan">ASM Redhuan</option>
+                                <option value="32636|ASM Zulfiqha">ASM Zulfiqha</option>
+                                <option value="34837|ASM Yayah">ASM Yayah</option>
+                                <option value="35674|ASM Jaya">ASM Jaya</option>
+                                <option value="35678|ASM Nidhan">ASM Nidhan</option>
+                                <option value="36986|ASM Suga">ASM Suga</option>
+                                <option value="37141|ASM Farouk">ASM Farouk</option>
+                                <option value="37160|ASM Tivek">ASM Tivek</option>
+                                <option value="37237|ASM Daniel">ASM Daniel</option>
+                                <option value="37276|ASM Zamri">ASM Zamri</option>
+                                <option value="37295|ASM Uvanraj">ASM Uvanraj</option>
+                                <option value="38799|ASM Amirul">ASM Amirul</option>
+                                <option value="38841|ASM Afidah">ASM Afidah</option>
+                                <option value="98044|ASM Salihin">ASM Salihin</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName4" id="staffName4" placeholder="e.g. ASM Azhar">
+                            <input type="text" name="staffName4" id="staffName4" placeholder="Auto-filled from dropdown" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Staff ID (Numbers Only)</label>
-                            <input type="text" name="staffId4" id="staffId4" placeholder="e.g. 12345" pattern="[0-9]*">
+                            <label>Staff ID</label>
+                            <input type="text" name="staffId4" id="staffId4" placeholder="Auto-filled from dropdown" readonly>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Photo Uploads -->
+            <!-- ═══════════════════════════════════════ -->
+            <!--            PHOTO UPLOADS                -->
+            <!-- ═══════════════════════════════════════ -->
             <div class="form-card">
                 <div class="section-title">📸 Photo Uploads</div>
 
@@ -509,16 +639,62 @@
     </div>
 
     <script>
-        // Set today's date as default
+        // ─────────────────────────────────────────────
+        //  Staff Data List
+        // ─────────────────────────────────────────────
+        const staffList = [
+            { id: "29348", name: "SSM Sam" },
+            { id: "28784", name: "SM Zann" },
+            { id: "30801", name: "SM Kamhani" },
+            { id: "30979", name: "ASM Azhar" },
+            { id: "32182", name: "ASM Redhuan" },
+            { id: "32636", name: "ASM Zulfiqha" },
+            { id: "34837", name: "ASM Yayah" },
+            { id: "35674", name: "ASM Jaya" },
+            { id: "35678", name: "ASM Nidhan" },
+            { id: "36986", name: "ASM Suga" },
+            { id: "37141", name: "ASM Farouk" },
+            { id: "37160", name: "ASM Tivek" },
+            { id: "37237", name: "ASM Daniel" },
+            { id: "37276", name: "ASM Zamri" },
+            { id: "37295", name: "ASM Uvanraj" },
+            { id: "38799", name: "ASM Amirul" },
+            { id: "38841", name: "ASM Afidah" },
+            { id: "98044", name: "ASM Salihin" }
+        ];
+
+        // ─────────────────────────────────────────────
+        //  Populate Staff Name & ID from Dropdown
+        // ─────────────────────────────────────────────
+        function populateStaff(staffNumber) {
+            const dropdown = document.getElementById(`staffSelect${staffNumber}`);
+            const nameField = document.getElementById(`staffName${staffNumber}`);
+            const idField   = document.getElementById(`staffId${staffNumber}`);
+            const selected  = dropdown.value;
+
+            if (selected) {
+                const [id, name] = selected.split('|');
+                nameField.value  = name;
+                idField.value    = id;
+            } else {
+                nameField.value  = '';
+                idField.value    = '';
+            }
+        }
+
+        // ─────────────────────────────────────────────
+        //  Set today's date & current time as default
+        // ─────────────────────────────────────────────
         document.getElementById('date').valueAsDate = new Date();
 
-        // Set current time as default
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
+        const now     = new Date();
+        const hours   = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         document.getElementById('time').value = `${hours}:${minutes}`;
 
-        // Image preview for passenger photo
+        // ─────────────────────────────────────────────
+        //  Image Previews
+        // ─────────────────────────────────────────────
         document.getElementById('passengerPhoto').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -532,7 +708,6 @@
             }
         });
 
-        // Image preview for compliment letter
         document.getElementById('complimentLetter').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -546,20 +721,23 @@
             }
         });
 
-        // Staff ID - numbers only validation
-        document.querySelectorAll('[name^="staffId"]').forEach(input => {
-            input.addEventListener('input', function() {
-                this.value = this.value.replace(/[^0-9]/g, '');
-            });
-        });
-
-        // Form submission
+        // ─────────────────────────────────────────────
+        //  Form Submission
+        // ─────────────────────────────────────────────
         document.getElementById('storyForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const btn = document.getElementById('btnGenerate');
-            const btnText = document.getElementById('btnText');
-            const spinner = document.getElementById('spinner');
+            // Validate Staff 1 is selected
+            if (!document.getElementById('staffName1').value) {
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.textContent = '❌ Please select Staff 1 from the dropdown.';
+                errorMsg.classList.add('show');
+                return;
+            }
+
+            const btn      = document.getElementById('btnGenerate');
+            const btnText  = document.getElementById('btnText');
+            const spinner  = document.getElementById('spinner');
             const errorMsg = document.getElementById('errorMsg');
             const resultCard = document.getElementById('resultCard');
 
@@ -605,6 +783,9 @@
             }
         });
 
+        // ─────────────────────────────────────────────
+        //  Copy Story
+        // ─────────────────────────────────────────────
         function copyStory() {
             const text = document.getElementById('storyText').textContent;
             navigator.clipboard.writeText(text).then(() => {
