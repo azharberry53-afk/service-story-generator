@@ -26,7 +26,7 @@
 
         .header {
             text-align: center;
-            padding: 30px 0;
+            padding: 30px 0 10px;
         }
 
         .header h1 {
@@ -49,6 +49,57 @@
             font-size: 1em;
         }
 
+        /* ── Tab Navigation ── */
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 6px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #7eb8d0;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,180,216,0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(0,180,216,0.1);
+            color: #00b4d8;
+        }
+
+        /* ── Pages ── */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Cards ── */
         .form-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -97,7 +148,8 @@
         }
 
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             padding: 10px 14px;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -106,16 +158,24 @@
             font-size: 0.95em;
             transition: all 0.3s ease;
             outline: none;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             border-color: #00b4d8;
             box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
             background: rgba(255, 255, 255, 0.12);
         }
 
-        .form-group input::placeholder {
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
             color: #5a7a8a;
         }
 
@@ -162,7 +222,6 @@
             gap: 8px;
         }
 
-        /* ── Dropdown select option color fix ── */
         .form-group select option {
             background: #1a2a4a;
             color: #e0e0e0;
@@ -172,7 +231,6 @@
             color: #5a7a8a;
         }
 
-        /* ── Read-only auto-filled fields ── */
         .form-group input[readonly] {
             background: rgba(0, 180, 216, 0.08);
             border-color: rgba(0, 180, 216, 0.25);
@@ -180,6 +238,7 @@
             cursor: default;
         }
 
+        /* ── Buttons ── */
         .btn-generate {
             width: 100%;
             padding: 14px;
@@ -227,6 +286,7 @@
             to { transform: rotate(360deg); }
         }
 
+        /* ── Result Card ── */
         .result-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -240,11 +300,6 @@
         .result-card.show {
             display: block;
             animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .result-title {
@@ -264,21 +319,17 @@
             color: #d0d0d0;
             font-size: 0.95em;
             white-space: pre-wrap;
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
         }
 
-        .story-text::-webkit-scrollbar {
-            width: 6px;
-        }
-
+        .story-text::-webkit-scrollbar { width: 6px; }
         .story-text::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             border-radius: 3px;
         }
-
         .story-text::-webkit-scrollbar-thumb {
-            background: rgba(0, 180, 216, 0.3);
+            background: rgba(0,180,216,0.3);
             border-radius: 3px;
         }
 
@@ -296,23 +347,6 @@
 
         .btn-copy:hover {
             background: rgba(0, 180, 216, 0.3);
-        }
-
-        .success-badge {
-            display: none;
-            background: rgba(0, 200, 83, 0.15);
-            border: 1px solid rgba(0, 200, 83, 0.3);
-            border-radius: 8px;
-            padding: 12px 20px;
-            color: #00c853;
-            margin-top: 15px;
-            font-size: 0.9em;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .success-badge.show {
-            display: flex;
         }
 
         .error-msg {
@@ -346,38 +380,128 @@
             display: none;
         }
 
-        .image-preview.show {
-            display: block;
+        .image-preview.show { display: block; }
+
+        /* ── Template Preview ── */
+        .template-preview {
+            background: rgba(0, 180, 216, 0.05);
+            border: 1px dashed rgba(0, 180, 216, 0.3);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            font-size: 0.85em;
+            color: #7eb8d0;
+            line-height: 1.9;
+            white-space: pre-wrap;
+        }
+
+        .template-preview-title {
+            font-size: 0.8em;
+            color: #00b4d8;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Quick Template Buttons ── */
+        .quick-templates {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .tpl-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(0,180,216,0.4);
+            background: rgba(0,180,216,0.08);
+            color: #00b4d8;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+        }
+
+        .tpl-btn:hover {
+            background: rgba(0,180,216,0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,180,216,0.2);
+        }
+
+        .tpl-btn.selected {
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* ── AI Badge ── */
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.78em;
+            color: #a78bfa;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .ai-dot {
+            width: 7px;
+            height: 7px;
+            background: #a78bfa;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* ── Manual page char count ── */
+        .char-count {
+            font-size: 0.78em;
+            color: #5a7a8a;
+            text-align: right;
+            margin-top: 4px;
         }
 
         @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .header h1 {
-                font-size: 1.6em;
-            }
-            .container {
-                padding: 10px;
-            }
-            .form-card {
-                padding: 20px;
-            }
+            .form-row { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.6em; }
+            .container { padding: 10px; }
+            .form-card { padding: 20px; }
+            .tab-btn { font-size: 0.82em; padding: 10px 6px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🚇 Service Story Generator</h1>
-            <p>by Azhar Berry</p>
-        </div>
+<div class="container">
 
+    <div class="header">
+        <h1>🚇 Service Story Generator</h1>
+        <p>by Azhar Berry <span class="ai-badge"><span class="ai-dot"></span>Groq AI</span></p>
+    </div>
+
+    <!-- ── Tab Navigation ── -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('auto')">⚡ Auto Generator</button>
+        <button class="tab-btn" onclick="switchTab('manual')">✍️ Manual Story</button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--               PAGE 1 – AUTO GENERATOR          -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div id="page-auto" class="page active">
         <form id="storyForm" enctype="multipart/form-data">
 
-            <!-- ═══════════════════════════════════════ -->
-            <!--           INCIDENT DETAILS              -->
-            <!-- ═══════════════════════════════════════ -->
+            <!-- INCIDENT DETAILS -->
             <div class="form-card">
                 <div class="section-title">📋 Incident Details</div>
 
@@ -395,14 +519,31 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Location</label>
-                        <div class="location-display">
-                            📍 Woodlands North MRT Station
-                        </div>
-                        <input type="hidden" name="location" value="Woodlands North MRT Station">
+                        <div class="location-display">📍 TE01 Woodlands North MRT Station</div>
+                        <input type="hidden" name="location" value="TE01 Woodlands North MRT Station">
                     </div>
                     <div class="form-group">
-                        <label>Lost Item <span class="required">*</span></label>
-                        <input type="text" id="lostItem" name="lostItem" placeholder="e.g. Bag, Handphone, Wallet" required>
+                        <label>Incident Type <span class="required">*</span></label>
+                        <select id="incidentType" name="incidentType" required>
+                            <option value="" disabled selected>-- Select Type --</option>
+                            <option value="lost_item">🎒 Lost Item / Found Item</option>
+                            <option value="drunk_passenger">🍺 Drunk Passenger</option>
+                            <option value="sick_passenger">🤒 Sick Passenger</option>
+                            <option value="tuk_machine">🎫 Staff Guide Passenger (TUK Machine)</option>
+                            <option value="direction">🗺️ Passenger Asking for Direction</option>
+                            <option value="other">💬 Other / General Compliment</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row" id="lostItemRow">
+                    <div class="form-group">
+                        <label>Lost / Found Item</label>
+                        <input type="text" id="lostItem" name="lostItem" placeholder="e.g. Bag, Handphone, Wallet">
+                    </div>
+                    <div class="form-group">
+                        <label>Additional Notes</label>
+                        <input type="text" id="additionalNotes" name="additionalNotes" placeholder="Any extra details...">
                     </div>
                 </div>
 
@@ -422,13 +563,11 @@
                 </div>
             </div>
 
-            <!-- ═══════════════════════════════════════ -->
-            <!--            STAFF DETAILS                -->
-            <!-- ═══════════════════════════════════════ -->
+            <!-- STAFF DETAILS -->
             <div class="form-card">
                 <div class="section-title">👥 Staff Details</div>
 
-                <!-- ── Staff 1 - Required ── -->
+                <!-- Staff 1 -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 1 <span class="required">* (Required)</span></div>
                     <div class="form-row single">
@@ -461,16 +600,16 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName1" id="staffName1" placeholder="Auto-filled from dropdown" readonly required>
+                            <input type="text" name="staffName1" id="staffName1" readonly required>
                         </div>
                         <div class="form-group">
                             <label>Staff ID</label>
-                            <input type="text" name="staffId1" id="staffId1" placeholder="Auto-filled from dropdown" readonly required>
+                            <input type="text" name="staffId1" id="staffId1" readonly required>
                         </div>
                     </div>
                 </div>
 
-                <!-- ── Staff 2 - Optional ── -->
+                <!-- Staff 2 -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 2 (Optional)</div>
                     <div class="form-row single">
@@ -503,16 +642,16 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName2" id="staffName2" placeholder="Auto-filled from dropdown" readonly>
+                            <input type="text" name="staffName2" id="staffName2" readonly>
                         </div>
                         <div class="form-group">
                             <label>Staff ID</label>
-                            <input type="text" name="staffId2" id="staffId2" placeholder="Auto-filled from dropdown" readonly>
+                            <input type="text" name="staffId2" id="staffId2" readonly>
                         </div>
                     </div>
                 </div>
 
-                <!-- ── Staff 3 - Optional ── -->
+                <!-- Staff 3 -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 3 (Optional)</div>
                     <div class="form-row single">
@@ -545,16 +684,16 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName3" id="staffName3" placeholder="Auto-filled from dropdown" readonly>
+                            <input type="text" name="staffName3" id="staffName3" readonly>
                         </div>
                         <div class="form-group">
                             <label>Staff ID</label>
-                            <input type="text" name="staffId3" id="staffId3" placeholder="Auto-filled from dropdown" readonly>
+                            <input type="text" name="staffId3" id="staffId3" readonly>
                         </div>
                     </div>
                 </div>
 
-                <!-- ── Staff 4 - Optional ── -->
+                <!-- Staff 4 -->
                 <div class="staff-section">
                     <div class="staff-label">Staff 4 (Optional)</div>
                     <div class="form-row single">
@@ -587,220 +726,585 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label>Staff Name</label>
-                            <input type="text" name="staffName4" id="staffName4" placeholder="Auto-filled from dropdown" readonly>
+                            <input type="text" name="staffName4" id="staffName4" readonly>
                         </div>
                         <div class="form-group">
                             <label>Staff ID</label>
-                            <input type="text" name="staffId4" id="staffId4" placeholder="Auto-filled from dropdown" readonly>
+                            <input type="text" name="staffId4" id="staffId4" readonly>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- ═══════════════════════════════════════ -->
-            <!--            PHOTO UPLOADS                -->
-            <!-- ═══════════════════════════════════════ -->
+            <!-- PHOTO UPLOADS -->
             <div class="form-card">
-                <div class="section-title">📸 Photo Uploads</div>
-
+                <div class="section-title">📸 Photo Uploads (Optional)</div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Passenger Photo (JPG) <span class="required">*</span></label>
-                        <input type="file" name="passengerPhoto" id="passengerPhoto" accept="image/jpeg,image/jpg,image/png" required>
+                        <label>Passenger Photo</label>
+                        <input type="file" name="passengerPhoto" id="passengerPhoto" accept="image/*">
                     </div>
                     <div class="form-group">
-                        <label>Compliment Letter (JPG) <span class="required">*</span></label>
-                        <input type="file" name="complimentLetter" id="complimentLetter" accept="image/jpeg,image/jpg,image/png" required>
+                        <label>Compliment Letter</label>
+                        <input type="file" name="complimentLetter" id="complimentLetter" accept="image/*">
                     </div>
                 </div>
-
                 <div class="image-preview-container">
                     <img id="previewPassenger" class="image-preview" alt="Passenger Photo Preview">
                     <img id="previewCompliment" class="image-preview" alt="Compliment Letter Preview">
                 </div>
             </div>
 
-            <!-- Submit Button -->
+            <!-- OUTPUT FORMAT PREVIEW -->
+            <div class="form-card">
+                <div class="section-title">📄 Output Format Preview</div>
+                <div class="template-preview-title">Your story will be generated in this format:</div>
+                <div class="template-preview" id="templatePreview">Loading preview...</div>
+            </div>
+
             <button type="submit" class="btn-generate" id="btnGenerate">
                 <span id="btnText">✨ Generate Service Story</span>
                 <div class="spinner" id="spinner"></div>
             </button>
         </form>
 
-        <!-- Error Message -->
         <div class="error-msg" id="errorMsg"></div>
 
-        <!-- Result -->
         <div class="result-card" id="resultCard">
             <div class="result-title">📖 Generated Service Story</div>
             <div class="story-text" id="storyText"></div>
-            <button class="btn-copy" onclick="copyStory()">📋 Copy Story</button>
-            <div class="success-badge show" id="successBadge">
-                ✅ Story saved to Google Sheet successfully!
-            </div>
+            <button class="btn-copy" onclick="copyStory('storyText')">📋 Copy Story</button>
         </div>
     </div>
 
-    <script>
-        // ─────────────────────────────────────────────
-        //  Staff Data List
-        // ─────────────────────────────────────────────
-        const staffList = [
-            { id: "29348", name: "SSM Sam" },
-            { id: "28784", name: "SM Zann" },
-            { id: "30801", name: "SM Kamhani" },
-            { id: "30979", name: "ASM Azhar" },
-            { id: "32182", name: "ASM Redhuan" },
-            { id: "32636", name: "ASM Zulfiqha" },
-            { id: "34837", name: "ASM Yayah" },
-            { id: "35674", name: "ASM Jaya" },
-            { id: "35678", name: "ASM Nidhan" },
-            { id: "36986", name: "ASM Suga" },
-            { id: "37141", name: "ASM Farouk" },
-            { id: "37160", name: "ASM Tivek" },
-            { id: "37237", name: "ASM Daniel" },
-            { id: "37276", name: "ASM Zamri" },
-            { id: "37295", name: "ASM Uvanraj" },
-            { id: "38799", name: "ASM Amirul" },
-            { id: "38841", name: "ASM Afidah" },
-            { id: "98044", name: "ASM Salihin" },
-            { id: "98863", name: "ASM Liyana" }
-        ];
+    <!-- ══════════════════════════════════════════════ -->
+    <!--            PAGE 2 – MANUAL STORY               -->
+    <!-- ══════════════════════════════════════════════ -->
+    <div id="page-manual" class="page">
 
-        // ─────────────────────────────────────────────
-        //  Populate Staff Name & ID from Dropdown
-        // ─────────────────────────────────────────────
-        function populateStaff(staffNumber) {
-            const dropdown = document.getElementById(`staffSelect${staffNumber}`);
-            const nameField = document.getElementById(`staffName${staffNumber}`);
-            const idField   = document.getElementById(`staffId${staffNumber}`);
-            const selected  = dropdown.value;
+        <div class="form-card">
+            <div class="section-title">✍️ Manual Service Story Generator</div>
 
-            if (selected) {
-                const [id, name] = selected.split('|');
-                nameField.value  = name;
-                idField.value    = id;
-            } else {
-                nameField.value  = '';
-                idField.value    = '';
-            }
-        }
+            <!-- Quick Templates -->
+            <div style="margin-bottom:20px;">
+                <div class="template-preview-title" style="margin-bottom:10px;">⚡ Quick Templates — click to auto-fill prompt:</div>
+                <div class="quick-templates">
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('drunk')">🍺 Drunk Passenger</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('sick')">🤒 Sick Passenger</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('tuk')">🎫 TUK Machine Guide</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('direction')">🗺️ Direction Assistance</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('lost')">🎒 Lost & Found</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('custom')">💬 Custom / Other</button>
+                </div>
+            </div>
 
-        // ─────────────────────────────────────────────
-        //  Set today's date & current time as default
-        // ─────────────────────────────────────────────
-        document.getElementById('date').valueAsDate = new Date();
+            <!-- Manual Date/Time/Staff -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Date <span class="required">*</span></label>
+                    <input type="date" id="manualDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Time <span class="required">*</span></label>
+                    <input type="time" id="manualTime" required>
+                </div>
+            </div>
 
-        const now     = new Date();
-        const hours   = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        document.getElementById('time').value = `${hours}:${minutes}`;
+            <div class="form-row single">
+                <div class="form-group">
+                    <label>Staff Involved <span class="required">*</span></label>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;" id="manualStaffPills"></div>
+                    <select id="manualStaffSelect" style="margin-top:8px;" onchange="addManualStaff()">
+                        <option value="" selected>-- Add Staff --</option>
+                        <option value="29348|SSM Sam">SSM Sam</option>
+                        <option value="28784|SM Zann">SM Zann</option>
+                        <option value="30801|SM Kamhani">SM Kamhani</option>
+                        <option value="30979|ASM Azhar">ASM Azhar</option>
+                        <option value="32182|ASM Redhuan">ASM Redhuan</option>
+                        <option value="32636|ASM Zulfiqha">ASM Zulfiqha</option>
+                        <option value="34837|ASM Yayah">ASM Yayah</option>
+                        <option value="35674|ASM Jaya">ASM Jaya</option>
+                        <option value="35678|ASM Nidhan">ASM Nidhan</option>
+                        <option value="36986|ASM Suga">ASM Suga</option>
+                        <option value="37141|ASM Farouk">ASM Farouk</option>
+                        <option value="37160|ASM Tivek">ASM Tivek</option>
+                        <option value="37237|ASM Daniel">ASM Daniel</option>
+                        <option value="37276|ASM Zamri">ASM Zamri</option>
+                        <option value="37295|ASM Uvanraj">ASM Uvanraj</option>
+                        <option value="38799|ASM Amirul">ASM Amirul</option>
+                        <option value="38841|ASM Afidah">ASM Afidah</option>
+                        <option value="98044|ASM Salihin">ASM Salihin</option>
+                        <option value="98863|ASM Liyana">ASM Liyana</option>
+                    </select>
+                </div>
+            </div>
 
-        // ─────────────────────────────────────────────
-        //  Image Previews
-        // ─────────────────────────────────────────────
-        document.getElementById('passengerPhoto').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(ev) {
-                    const img = document.getElementById('previewPassenger');
-                    img.src = ev.target.result;
-                    img.classList.add('show');
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+            <!-- Prompt Box -->
+            <div class="form-row single" style="margin-top:10px;">
+                <div class="form-group">
+                    <label>Describe the incident / what happened <span class="required">*</span></label>
+                    <textarea id="manualPrompt" rows="6"
+                        placeholder="e.g. A passenger approached our staff asking for help with the TUK machine. Staff patiently guided the passenger step by step..."></textarea>
+                    <div class="char-count" id="charCount">0 / 1000</div>
+                </div>
+            </div>
 
-        document.getElementById('complimentLetter').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(ev) {
-                    const img = document.getElementById('previewCompliment');
-                    img.src = ev.target.result;
-                    img.classList.add('show');
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+            <button type="button" class="btn-generate" id="btnManual" onclick="generateManualStory()">
+                <span id="btnManualText">🤖 Generate with Groq AI</span>
+                <div class="spinner" id="spinnerManual"></div>
+            </button>
+        </div>
 
-        // ─────────────────────────────────────────────
-        //  Form Submission
-        // ─────────────────────────────────────────────
-        document.getElementById('storyForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        <div class="error-msg" id="errorMsgManual"></div>
 
-            // Validate Staff 1 is selected
-            if (!document.getElementById('staffName1').value) {
-                const errorMsg = document.getElementById('errorMsg');
-                errorMsg.textContent = '❌ Please select Staff 1 from the dropdown.';
-                errorMsg.classList.add('show');
-                return;
-            }
+        <div class="result-card" id="resultCardManual">
+            <div class="result-title">📖 Generated Service Story</div>
+            <div class="story-text" id="storyTextManual"></div>
+            <button class="btn-copy" onclick="copyStory('storyTextManual')">📋 Copy Story</button>
+        </div>
+    </div>
 
-            const btn      = document.getElementById('btnGenerate');
-            const btnText  = document.getElementById('btnText');
-            const spinner  = document.getElementById('spinner');
-            const errorMsg = document.getElementById('errorMsg');
-            const resultCard = document.getElementById('resultCard');
+</div><!-- /container -->
 
-            // Reset
-            errorMsg.classList.remove('show');
-            resultCard.classList.remove('show');
+<script>
+// ════════════════════════════════════════════════════
+//  GROQ CONFIG  ⚠️ Regenerate this key — it's public!
+// ════════════════════════════════════════════════════
+const GROQ_API_KEY = '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';
+const GROQ_MODEL   = 'llama3-70b-8192';
+const GROQ_URL     = 'https://api.groq.com/openai/v1/chat/completions';
 
-            // Loading state
-            btn.disabled = true;
-            btn.classList.add('loading');
-            btnText.textContent = 'Generating Story...';
-            spinner.style.display = 'block';
+// ════════════════════════════════════════════════════
+//  TAB SWITCHING
+// ════════════════════════════════════════════════════
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((b,i) => {
+        b.classList.toggle('active', (i === 0 && tab === 'auto') || (i === 1 && tab === 'manual'));
+    });
+    document.getElementById('page-auto').classList.toggle('active', tab === 'auto');
+    document.getElementById('page-manual').classList.toggle('active', tab === 'manual');
+}
 
-            try {
-                const formData = new FormData(this);
+// ════════════════════════════════════════════════════
+//  DATE / TIME HELPERS
+// ════════════════════════════════════════════════════
+const MONTHS = ['January','February','March','April','May','June',
+                'July','August','September','October','November','December'];
 
-                const response = await fetch('/api/generate', {
-                    method: 'POST',
-                    body: formData
-                });
+function formatDate(d) {
+    if (!d) return '--';
+    const [y,m,day] = d.split('-');
+    return `${String(parseInt(day)).padStart(2,'0')} ${MONTHS[parseInt(m)-1]} ${y}`;
+}
 
-                const data = await response.json();
+function formatTime(t) {
+    if (!t) return '--';
+    return t.replace(':','') + 'hrs';
+}
 
-                if (!response.ok) {
-                    throw new Error(data.error || 'Failed to generate story');
-                }
+// ════════════════════════════════════════════════════
+//  STAFF HELPERS (Auto page)
+// ════════════════════════════════════════════════════
+function populateStaff(n) {
+    const dd   = document.getElementById(`staffSelect${n}`);
+    const name = document.getElementById(`staffName${n}`);
+    const id   = document.getElementById(`staffId${n}`);
+    if (dd.value) {
+        const [sid, sname] = dd.value.split('|');
+        name.value = sname;
+        id.value   = sid;
+    } else {
+        name.value = '';
+        id.value   = '';
+    }
+    updateTemplatePreview();
+}
 
-                // Show result
-                document.getElementById('storyText').textContent = data.story;
-                resultCard.classList.add('show');
+function buildStaffInvolved() {
+    const parts = [];
+    for (let i = 1; i <= 4; i++) {
+        const n = document.getElementById(`staffName${i}`).value.trim();
+        const d = document.getElementById(`staffId${i}`).value.trim();
+        if (n && d) parts.push(`${n} ${d}`);
+    }
+    return parts.length ? parts.join(', ') : '--';
+}
 
-                // Scroll to result
-                resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// ════════════════════════════════════════════════════
+//  TEMPLATE PREVIEW (Auto page)
+// ════════════════════════════════════════════════════
+function updateTemplatePreview() {
+    const d = formatDate(document.getElementById('date').value);
+    const t = formatTime(document.getElementById('time').value);
+    const s = buildStaffInvolved();
+    document.getElementById('templatePreview').textContent =
+`Date : ${d}
+Time : ${t}
+Location : TE01 Woodlands North
+Staff Involved : ${s}
 
-            } catch (error) {
-                errorMsg.textContent = '❌ Error: ' + error.message;
-                errorMsg.classList.add('show');
-            } finally {
-                btn.disabled = false;
-                btn.classList.remove('loading');
-                btnText.textContent = '✨ Generate Service Story';
-                spinner.style.display = 'none';
-            }
-        });
+(Generated Service Story will appear here)
 
-        // ─────────────────────────────────────────────
-        //  Copy Story
-        // ─────────────────────────────────────────────
-        function copyStory() {
-            const text = document.getElementById('storyText').textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                const btn = event.target;
-                btn.textContent = '✅ Copied!';
-                setTimeout(() => {
-                    btn.textContent = '📋 Copy Story';
-                }, 2000);
-            });
-        }
-    </script>
+#serviceexcellence
+#TELservicefromtheheart
+#STELSQA
+#wecare
+#mySMRTwelovetohelp
+#teamtwdn
+
+@Desmond_Seow
+@Muhammad_Suhaimi_Bin_Jeffry`;
+}
+
+// ════════════════════════════════════════════════════
+//  BUILD FULL STORY WRAPPER
+// ════════════════════════════════════════════════════
+function buildFullStory(bodyText, dateStr, timeStr, staffStr) {
+    return `Date : ${dateStr}
+Time : ${timeStr}
+Location : TE01 Woodlands North
+Staff Involved : ${staffStr}
+
+${bodyText}
+
+#serviceexcellence
+#TELservicefromtheheart
+#STELSQA
+#wecare
+#mySMRTwelovetohelp
+#teamtwdn
+
+@Desmond_Seow
+@Muhammad_Suhaimi_Bin_Jeffry`;
+}
+
+// ════════════════════════════════════════════════════
+//  GROQ API CALLER
+// ════════════════════════════════════════════════════
+async function callGroq(systemPrompt, userPrompt) {
+    const res = await fetch(GROQ_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GROQ_API_KEY}`
+        },
+        body: JSON.stringify({
+            model: GROQ_MODEL,
+            temperature: 1.1,
+            max_tokens: 700,
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user',   content: userPrompt }
+            ]
+        })
+    });
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error?.message || `Groq API error ${res.status}`);
+    }
+    const data = await res.json();
+    return data.choices[0].message.content.trim();
+}
+
+// ════════════════════════════════════════════════════
+//  SYSTEM PROMPT FOR AUTO GENERATOR
+// ════════════════════════════════════════════════════
+function buildSystemPrompt() {
+    return `You are a professional service story writer for SMRT Woodlands North MRT Station (TE01) staff.
+Your job is to write a warm, natural, and engaging service excellence story for internal social media posts.
+
+RULES:
+- Write in a warm, human, first-person plural perspective ("our staff", "our team").
+- Every story must feel DIFFERENT. Use varied sentence structures, different opening lines, different narrative styles each time.
+- Do NOT start with "In" or "At" every time — vary the opening.
+- Keep it between 4–7 sentences.
+- Sound natural and genuine, not robotic or repetitive.
+- Do NOT include dates, times, hashtags, or staff IDs — those are added separately.
+- Do NOT include any headers or labels.
+- Just write the story paragraph(s) only.`;
+}
+
+// ════════════════════════════════════════════════════
+//  AUTO GENERATOR FORM SUBMIT
+// ════════════════════════════════════════════════════
+document.getElementById('storyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const staff1 = document.getElementById('staffName1').value;
+    if (!staff1) {
+        showError('errorMsg', '❌ Please select at least Staff 1.');
+        return;
+    }
+
+    const incidentType   = document.getElementById('incidentType').value;
+    if (!incidentType) {
+        showError('errorMsg', '❌ Please select an incident type.');
+        return;
+    }
+
+    const btn      = document.getElementById('btnGenerate');
+    const btnText  = document.getElementById('btnText');
+    const spinner  = document.getElementById('spinner');
+    const errorMsg = document.getElementById('errorMsg');
+    const resultCard = document.getElementById('resultCard');
+
+    errorMsg.classList.remove('show');
+    resultCard.classList.remove('show');
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btnText.textContent = '🤖 Generating with Groq AI...';
+    spinner.style.display = 'block';
+
+    try {
+        const dateStr    = formatDate(document.getElementById('date').value);
+        const timeStr    = formatTime(document.getElementById('time').value);
+        const staffStr   = buildStaffInvolved();
+        const paxTitle   = document.getElementById('passengerTitle').value;
+        const paxName    = document.getElementById('passengerName').value;
+        const lostItem   = document.getElementById('lostItem').value;
+        const notes      = document.getElementById('additionalNotes').value;
+
+        const incidentLabels = {
+            lost_item:        'Lost & Found Item',
+            drunk_passenger:  'Drunk Passenger Assistance',
+            sick_passenger:   'Sick Passenger Assistance',
+            tuk_machine:      'Staff Guiding Passenger to Use TUK Machine',
+            direction:        'Passenger Asking for Direction',
+            other:            'General Service Compliment'
+        };
+
+        const userPrompt = `Write a service excellence story for this incident:
+- Incident Type: ${incidentLabels[incidentType] || incidentType}
+- Passenger: ${paxTitle} ${paxName}
+- Staff Involved: ${staffStr}
+- Location: TE01 Woodlands North MRT Station
+${lostItem ? `- Item: ${lostItem}` : ''}
+${notes ? `- Additional details: ${notes}` : ''}
+
+Make the story warm, natural, and different from previous ones. Vary the style and opening line.`;
+
+        const storyBody = await callGroq(buildSystemPrompt(), userPrompt);
+        const fullStory = buildFullStory(storyBody, dateStr, timeStr, staffStr);
+
+        document.getElementById('storyText').textContent = fullStory;
+        resultCard.classList.add('show');
+        resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    } catch (err) {
+        showError('errorMsg', '❌ Error: ' + err.message);
+    } finally {
+        btn.disabled = false;
+        btn.classList.remove('loading');
+        btnText.textContent = '✨ Generate Service Story';
+        spinner.style.display = 'none';
+    }
+});
+
+// ════════════════════════════════════════════════════
+//  MANUAL STAFF PILLS
+// ════════════════════════════════════════════════════
+let manualStaffList = [];
+
+function addManualStaff() {
+    const dd = document.getElementById('manualStaffSelect');
+    if (!dd.value) return;
+    const [id, name] = dd.value.split('|');
+    if (manualStaffList.find(s => s.id === id)) {
+        dd.value = '';
+        return;
+    }
+    manualStaffList.push({ id, name });
+    renderManualStaffPills();
+    dd.value = '';
+}
+
+function removeManualStaff(id) {
+    manualStaffList = manualStaffList.filter(s => s.id !== id);
+    renderManualStaffPills();
+}
+
+function renderManualStaffPills() {
+    const container = document.getElementById('manualStaffPills');
+    container.innerHTML = manualStaffList.map(s => `
+        <span style="
+            display:inline-flex;align-items:center;gap:6px;
+            background:rgba(0,180,216,0.15);
+            border:1px solid rgba(0,180,216,0.4);
+            border-radius:20px;padding:5px 12px;
+            font-size:0.83em;color:#00b4d8;">
+            ${s.name} <span style="font-size:0.75em;color:#7eb8d0;">${s.id}</span>
+            <span onclick="removeManualStaff('${s.id}')"
+                style="cursor:pointer;color:#ff6b6b;margin-left:2px;font-weight:bold;">✕</span>
+        </span>`).join('');
+}
+
+function buildManualStaffStr() {
+    return manualStaffList.map(s => `${s.name} ${s.id}`).join(', ') || '--';
+}
+
+// ════════════════════════════════════════════════════
+//  QUICK TEMPLATE FILLER (Manual page)
+// ════════════════════════════════════════════════════
+const TEMPLATES = {
+    drunk: `A passenger was found in an intoxicated state near the platform area. Our staff noticed the passenger and immediately approached to ensure their safety. Staff assisted the passenger to a safe seating area, monitored their condition, and offered water. The passenger was attended to until they were stable and able to continue their journey safely.`,
+
+    sick: `A passenger was seen feeling unwell near the concourse area. Our staff quickly approached the passenger, who was visibly dizzy and pale. Staff assisted the passenger to a resting area, provided first aid support, and contacted the relevant authorities to ensure the passenger received proper medical attention. The passenger expressed heartfelt gratitude for the timely help.`,
+
+    tuk: `A passenger approached our staff, unsure of how to use the TUK machine to purchase a ticket. Our staff warmly welcomed the passenger and patiently guided them through each step of the process, ensuring they understood how to select their destination and make payment. The passenger was appreciative of the clear and friendly assistance provided.`,
+
+    direction: `A passenger approached our staff looking confused about which exit to take to reach their destination. Our staff greeted the passenger with a smile and provided clear, step-by-step directions, including which bus connections to take. The passenger thanked our staff for the warm and helpful guidance.`,
+
+    lost: `A passenger approached our staff in a worried state, having left behind a personal belonging on the train. Our staff immediately took action by checking with the relevant team and coordinating efforts to locate the item. The item was successfully retrieved, and the passenger was overjoyed and deeply grateful for the swift assistance provided by our dedicated team.`,
+
+    custom: ``
+};
+
+function fillTemplate(key) {
+    document.querySelectorAll('.tpl-btn').forEach(b => b.classList.remove('selected'));
+    event.target.classList.add('selected');
+    const ta = document.getElementById('manualPrompt');
+    ta.value = TEMPLATES[key];
+    updateCharCount();
+    ta.focus();
+}
+
+// ════════════════════════════════════════════════════
+//  CHAR COUNT
+// ════════════════════════════════════════════════════
+document.getElementById('manualPrompt').addEventListener('input', updateCharCount);
+function updateCharCount() {
+    const len = document.getElementById('manualPrompt').value.length;
+    document.getElementById('charCount').textContent = `${len} / 1000`;
+}
+
+// ════════════════════════════════════════════════════
+//  MANUAL STORY GENERATOR
+// ════════════════════════════════════════════════════
+async function generateManualStory() {
+    const prompt = document.getElementById('manualPrompt').value.trim();
+    const dateVal = document.getElementById('manualDate').value;
+    const timeVal = document.getElementById('manualTime').value;
+
+    if (!prompt) return showError('errorMsgManual', '❌ Please describe the incident or select a quick template.');
+    if (!dateVal) return showError('errorMsgManual', '❌ Please select a date.');
+    if (!timeVal) return showError('errorMsgManual', '❌ Please select a time.');
+    if (!manualStaffList.length) return showError('errorMsgManual', '❌ Please add at least one staff member.');
+
+    const btn     = document.getElementById('btnManual');
+    const btnText = document.getElementById('btnManualText');
+    const spinner = document.getElementById('spinnerManual');
+    const errEl   = document.getElementById('errorMsgManual');
+    const resCard = document.getElementById('resultCardManual');
+
+    errEl.classList.remove('show');
+    resCard.classList.remove('show');
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btnText.textContent = '🤖 Generating...';
+    spinner.style.display = 'block';
+
+    try {
+        const dateStr  = formatDate(dateVal);
+        const timeStr  = formatTime(timeVal);
+        const staffStr = buildManualStaffStr();
+
+        const systemPrompt = `You are a professional service story writer for SMRT Woodlands North MRT Station (TE01) staff.
+Your job is to rewrite and enhance the given incident description into a warm, natural, and engaging service excellence story for internal social media posts.
+
+RULES:
+- Write in warm, human, first-person plural ("our staff", "our team").
+- Each story must feel UNIQUE. Use varied sentence structure, opening lines, and narrative style.
+- Keep it between 4–7 sentences.
+- Sound genuine and heartfelt, not corporate or robotic.
+- Do NOT include dates, times, hashtags, staff IDs — those are added separately.
+- Do NOT include headers or labels.
+- Return only the story paragraph(s).`;
+
+        const userPrompt = `Rewrite this into a polished, natural service story:
+
+"${prompt}"
+
+Staff involved: ${staffStr}
+Location: TE01 Woodlands North MRT Station
+
+Make it warm, engaging, and varied in style.`;
+
+        const storyBody = await callGroq(systemPrompt, userPrompt);
+        const fullStory = buildFullStory(storyBody, dateStr, timeStr, staffStr);
+
+        document.getElementById('storyTextManual').textContent = fullStory;
+        resCard.classList.add('show');
+        resCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    } catch (err) {
+        showError('errorMsgManual', '❌ Error: ' + err.message);
+    } finally {
+        btn.disabled = false;
+        btn.classList.remove('loading');
+        btnText.textContent = '🤖 Generate with Groq AI';
+        spinner.style.display = 'none';
+    }
+}
+
+// ════════════════════════════════════════════════════
+//  COPY STORY
+// ════════════════════════════════════════════════════
+function copyStory(elId) {
+    const text = document.getElementById(elId).textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const orig = btn.textContent;
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = orig, 2000);
+    });
+}
+
+// ════════════════════════════════════════════════════
+//  ERROR HELPER
+// ════════════════════════════════════════════════════
+function showError(elId, msg) {
+    const el = document.getElementById(elId);
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 5000);
+}
+
+// ════════════════════════════════════════════════════
+//  IMAGE PREVIEWS
+// ════════════════════════════════════════════════════
+document.getElementById('passengerPhoto').addEventListener('change', function(e) {
+    previewImage(e.target.files[0], 'previewPassenger');
+});
+document.getElementById('complimentLetter').addEventListener('change', function(e) {
+    previewImage(e.target.files[0], 'previewCompliment');
+});
+function previewImage(file, previewId) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+        const img = document.getElementById(previewId);
+        img.src = ev.target.result;
+        img.classList.add('show');
+    };
+    reader.readAsDataURL(file);
+}
+
+// ════════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════════
+document.getElementById('date').valueAsDate = new Date();
+document.getElementById('manualDate').valueAsDate = new Date();
+
+const now = new Date();
+const hh  = String(now.getHours()).padStart(2,'0');
+const mm  = String(now.getMinutes()).padStart(2,'0');
+document.getElementById('time').value       = `${hh}:${mm}`;
+document.getElementById('manualTime').value = `${hh}:${mm}`;
+
+document.getElementById('date').addEventListener('change', updateTemplatePreview);
+document.getElementById('time').addEventListener('change', updateTemplatePreview);
+
+updateTemplatePreview();
+</script>
 </body>
 </html>
