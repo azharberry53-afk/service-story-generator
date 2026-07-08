@@ -49,7 +49,6 @@
             font-size: 1em;
         }
 
-        /* ── Tab Navigation ── */
         .tab-nav {
             display: flex;
             gap: 10px;
@@ -84,11 +83,7 @@
             color: #00b4d8;
         }
 
-        /* ── Pages ── */
-        .page {
-            display: none;
-        }
-
+        .page { display: none; }
         .page.active {
             display: block;
             animation: fadeIn 0.4s ease;
@@ -96,14 +91,13 @@
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Cards ── */
         .form-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 16px;
             padding: 30px;
             margin-bottom: 20px;
@@ -114,7 +108,7 @@
             color: #00b4d8;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 180, 216, 0.3);
+            border-bottom: 1px solid rgba(0,180,216,0.3);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -127,14 +121,9 @@
             margin-bottom: 15px;
         }
 
-        .form-row.single {
-            grid-template-columns: 1fr;
-        }
+        .form-row.single { grid-template-columns: 1fr; }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
+        .form-group { display: flex; flex-direction: column; }
 
         .form-group label {
             font-size: 0.85em;
@@ -143,16 +132,14 @@
             font-weight: 500;
         }
 
-        .form-group label .required {
-            color: #ff6b6b;
-        }
+        .form-group label .required { color: #ff6b6b; }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
             border-radius: 8px;
             color: #e0e0e0;
             font-size: 0.95em;
@@ -170,19 +157,14 @@
         .form-group select:focus,
         .form-group textarea:focus {
             border-color: #00b4d8;
-            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.15);
-            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(0,180,216,0.15);
+            background: rgba(255,255,255,0.12);
         }
 
         .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #5a7a8a;
-        }
+        .form-group textarea::placeholder { color: #5a7a8a; }
 
-        .form-group input[type="file"] {
-            padding: 8px;
-            cursor: pointer;
-        }
+        .form-group input[type="file"] { padding: 8px; cursor: pointer; }
 
         .form-group input[type="file"]::-webkit-file-upload-button {
             padding: 6px 16px;
@@ -196,8 +178,8 @@
         }
 
         .staff-section {
-            background: rgba(0, 180, 216, 0.05);
-            border: 1px solid rgba(0, 180, 216, 0.15);
+            background: rgba(0,180,216,0.05);
+            border: 1px solid rgba(0,180,216,0.15);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 15px;
@@ -212,8 +194,8 @@
 
         .location-display {
             padding: 10px 14px;
-            background: rgba(0, 180, 216, 0.1);
-            border: 1px solid rgba(0, 180, 216, 0.3);
+            background: rgba(0,180,216,0.1);
+            border: 1px solid rgba(0,180,216,0.3);
             border-radius: 8px;
             color: #00b4d8;
             font-weight: 600;
@@ -222,23 +204,16 @@
             gap: 8px;
         }
 
-        .form-group select option {
-            background: #1a2a4a;
-            color: #e0e0e0;
-        }
-
-        .form-group select option:disabled {
-            color: #5a7a8a;
-        }
+        .form-group select option { background: #1a2a4a; color: #e0e0e0; }
+        .form-group select option:disabled { color: #5a7a8a; }
 
         .form-group input[readonly] {
-            background: rgba(0, 180, 216, 0.08);
-            border-color: rgba(0, 180, 216, 0.25);
+            background: rgba(0,180,216,0.08);
+            border-color: rgba(0,180,216,0.25);
             color: #7eb8d0;
             cursor: default;
         }
 
-        /* ── Buttons ── */
         .btn-generate {
             width: 100%;
             padding: 14px;
@@ -259,7 +234,7 @@
 
         .btn-generate:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.3);
+            box-shadow: 0 8px 25px rgba(0,180,216,0.3);
         }
 
         .btn-generate:disabled {
@@ -268,29 +243,24 @@
             transform: none;
         }
 
-        .btn-generate.loading {
-            background: linear-gradient(135deg, #555, #777);
-        }
+        .btn-generate.loading { background: linear-gradient(135deg, #555, #777); }
 
         .spinner {
             width: 20px;
             height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255,255,255,0.3);
             border-top: 3px solid white;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
             display: none;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ── Result Card ── */
         .result-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 180, 216, 0.3);
+            border: 1px solid rgba(0,180,216,0.3);
             border-radius: 16px;
             padding: 30px;
             margin-top: 20px;
@@ -312,7 +282,7 @@
         }
 
         .story-text {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0,0,0,0.3);
             border-radius: 10px;
             padding: 20px;
             line-height: 1.8;
@@ -324,20 +294,14 @@
         }
 
         .story-text::-webkit-scrollbar { width: 6px; }
-        .story-text::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.05);
-            border-radius: 3px;
-        }
-        .story-text::-webkit-scrollbar-thumb {
-            background: rgba(0,180,216,0.3);
-            border-radius: 3px;
-        }
+        .story-text::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 3px; }
+        .story-text::-webkit-scrollbar-thumb { background: rgba(0,180,216,0.3); border-radius: 3px; }
 
         .btn-copy {
             margin-top: 15px;
             padding: 10px 24px;
-            background: rgba(0, 180, 216, 0.2);
-            border: 1px solid rgba(0, 180, 216, 0.4);
+            background: rgba(0,180,216,0.2);
+            border: 1px solid rgba(0,180,216,0.4);
             border-radius: 8px;
             color: #00b4d8;
             cursor: pointer;
@@ -345,14 +309,12 @@
             transition: all 0.3s ease;
         }
 
-        .btn-copy:hover {
-            background: rgba(0, 180, 216, 0.3);
-        }
+        .btn-copy:hover { background: rgba(0,180,216,0.3); }
 
         .error-msg {
             display: none;
-            background: rgba(255, 82, 82, 0.15);
-            border: 1px solid rgba(255, 82, 82, 0.3);
+            background: rgba(255,82,82,0.15);
+            border: 1px solid rgba(255,82,82,0.3);
             border-radius: 8px;
             padding: 12px 20px;
             color: #ff5252;
@@ -360,9 +322,7 @@
             font-size: 0.9em;
         }
 
-        .error-msg.show {
-            display: block;
-        }
+        .error-msg.show { display: block; }
 
         .image-preview-container {
             display: flex;
@@ -376,16 +336,15 @@
             height: 120px;
             border-radius: 8px;
             object-fit: cover;
-            border: 2px solid rgba(0, 180, 216, 0.3);
+            border: 2px solid rgba(0,180,216,0.3);
             display: none;
         }
 
         .image-preview.show { display: block; }
 
-        /* ── Template Preview ── */
         .template-preview {
-            background: rgba(0, 180, 216, 0.05);
-            border: 1px dashed rgba(0, 180, 216, 0.3);
+            background: rgba(0,180,216,0.05);
+            border: 1px dashed rgba(0,180,216,0.3);
             border-radius: 10px;
             padding: 16px 20px;
             margin-bottom: 20px;
@@ -404,7 +363,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* ── Quick Template Buttons ── */
         .quick-templates {
             display: flex;
             flex-wrap: wrap;
@@ -436,13 +394,12 @@
             border-color: transparent;
         }
 
-        /* ── AI Badge ── */
         .ai-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(124, 58, 237, 0.15);
-            border: 1px solid rgba(124, 58, 237, 0.3);
+            background: rgba(124,58,237,0.15);
+            border: 1px solid rgba(124,58,237,0.3);
             border-radius: 20px;
             padding: 4px 12px;
             font-size: 0.78em;
@@ -461,15 +418,25 @@
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+            50%       { opacity: 0.5; transform: scale(0.8); }
         }
 
-        /* ── Manual page char count ── */
         .char-count {
             font-size: 0.78em;
             color: #5a7a8a;
             text-align: right;
             margin-top: 4px;
+        }
+
+        .info-box {
+            background: rgba(0,180,216,0.07);
+            border: 1px solid rgba(0,180,216,0.2);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-size: 0.83em;
+            color: #7eb8d0;
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
 
         @media (max-width: 600px) {
@@ -489,7 +456,6 @@
         <p>by Azhar Berry <span class="ai-badge"><span class="ai-dot"></span>Groq AI</span></p>
     </div>
 
-    <!-- ── Tab Navigation ── -->
     <div class="tab-nav">
         <button class="tab-btn active" onclick="switchTab('auto')">⚡ Auto Generator</button>
         <button class="tab-btn" onclick="switchTab('manual')">✍️ Manual Story</button>
@@ -499,7 +465,7 @@
     <!--               PAGE 1 – AUTO GENERATOR          -->
     <!-- ══════════════════════════════════════════════ -->
     <div id="page-auto" class="page active">
-        <form id="storyForm" enctype="multipart/form-data">
+        <form id="storyForm">
 
             <!-- INCIDENT DETAILS -->
             <div class="form-card">
@@ -524,7 +490,7 @@
                     </div>
                     <div class="form-group">
                         <label>Incident Type <span class="required">*</span></label>
-                        <select id="incidentType" name="incidentType" required>
+                        <select id="incidentType" name="incidentType" required onchange="toggleIncidentFields()">
                             <option value="" disabled selected>-- Select Type --</option>
                             <option value="lost_item">🎒 Lost Item / Found Item</option>
                             <option value="drunk_passenger">🍺 Drunk Passenger</option>
@@ -536,14 +502,28 @@
                     </div>
                 </div>
 
-                <div class="form-row" id="lostItemRow">
-                    <div class="form-group">
-                        <label>Lost / Found Item</label>
-                        <input type="text" id="lostItem" name="lostItem" placeholder="e.g. Bag, Handphone, Wallet">
+                <!-- Lost Item specific fields -->
+                <div id="lostItemFields">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Item Description <span class="required">*</span></label>
+                            <input type="text" id="lostItem" name="lostItem"
+                                placeholder="e.g. Plastic Bag with Running Accessories">
+                        </div>
+                        <div class="form-group">
+                            <label>Where Was Item Found</label>
+                            <input type="text" id="itemLocation" name="itemLocation"
+                                placeholder="e.g. Platform seating area, Concourse">
+                        </div>
                     </div>
+                </div>
+
+                <!-- General notes -->
+                <div class="form-row single">
                     <div class="form-group">
-                        <label>Additional Notes</label>
-                        <input type="text" id="additionalNotes" name="additionalNotes" placeholder="Any extra details...">
+                        <label>Additional Notes / Context</label>
+                        <input type="text" id="additionalNotes" name="additionalNotes"
+                            placeholder="e.g. Passenger was elderly, item was handed to police, etc.">
                     </div>
                 </div>
 
@@ -551,13 +531,14 @@
                     <div class="form-group">
                         <label>Passenger Name <span class="required">*</span></label>
                         <div style="display:flex;gap:10px;">
-                            <select name="passengerTitle" id="passengerTitle" style="width:100px;" required>
+                            <select name="passengerTitle" id="passengerTitle" style="width:110px;" required>
                                 <option value="Mr">Mr</option>
                                 <option value="Ms">Ms</option>
                                 <option value="Mrs">Mrs</option>
                                 <option value="Mdm">Mdm</option>
                             </select>
-                            <input type="text" id="passengerName" name="passengerName" placeholder="Full Name" style="flex:1;" required>
+                            <input type="text" id="passengerName" name="passengerName"
+                                placeholder="Full Name" style="flex:1;" required>
                         </div>
                     </div>
                 </div>
@@ -566,6 +547,9 @@
             <!-- STAFF DETAILS -->
             <div class="form-card">
                 <div class="section-title">👥 Staff Details</div>
+                <div class="info-box">
+                    💡 All selected staff will be mentioned by name in the story with their own specific role and contribution.
+                </div>
 
                 <!-- Staff 1 -->
                 <div class="staff-section">
@@ -742,11 +726,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Passenger Photo</label>
-                        <input type="file" name="passengerPhoto" id="passengerPhoto" accept="image/*">
+                        <input type="file" id="passengerPhoto" accept="image/*">
                     </div>
                     <div class="form-group">
                         <label>Compliment Letter</label>
-                        <input type="file" name="complimentLetter" id="complimentLetter" accept="image/*">
+                        <input type="file" id="complimentLetter" accept="image/*">
                     </div>
                 </div>
                 <div class="image-preview-container">
@@ -758,8 +742,8 @@
             <!-- OUTPUT FORMAT PREVIEW -->
             <div class="form-card">
                 <div class="section-title">📄 Output Format Preview</div>
-                <div class="template-preview-title">Your story will be generated in this format:</div>
-                <div class="template-preview" id="templatePreview">Loading preview...</div>
+                <div class="template-preview-title">Live preview — updates as you fill the form:</div>
+                <div class="template-preview" id="templatePreview">Fill in the form above to see preview...</div>
             </div>
 
             <button type="submit" class="btn-generate" id="btnGenerate">
@@ -785,20 +769,23 @@
         <div class="form-card">
             <div class="section-title">✍️ Manual Service Story Generator</div>
 
+            <div class="info-box">
+                💡 Select a quick template to auto-fill the prompt, then customise as needed. All staff added will be mentioned by name with their own role in the story.
+            </div>
+
             <!-- Quick Templates -->
             <div style="margin-bottom:20px;">
-                <div class="template-preview-title" style="margin-bottom:10px;">⚡ Quick Templates — click to auto-fill prompt:</div>
+                <div class="template-preview-title" style="margin-bottom:10px;">⚡ Quick Templates:</div>
                 <div class="quick-templates">
-                    <button type="button" class="tpl-btn" onclick="fillTemplate('drunk')">🍺 Drunk Passenger</button>
-                    <button type="button" class="tpl-btn" onclick="fillTemplate('sick')">🤒 Sick Passenger</button>
-                    <button type="button" class="tpl-btn" onclick="fillTemplate('tuk')">🎫 TUK Machine Guide</button>
-                    <button type="button" class="tpl-btn" onclick="fillTemplate('direction')">🗺️ Direction Assistance</button>
-                    <button type="button" class="tpl-btn" onclick="fillTemplate('lost')">🎒 Lost & Found</button>
-                    <button type="button" class="tpl-btn" onclick="fillTemplate('custom')">💬 Custom / Other</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('drunk', this)">🍺 Drunk Passenger</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('sick', this)">🤒 Sick Passenger</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('tuk', this)">🎫 TUK Machine Guide</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('direction', this)">🗺️ Direction Assistance</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('lost', this)">🎒 Lost & Found</button>
+                    <button type="button" class="tpl-btn" onclick="fillTemplate('custom', this)">💬 Custom / Other</button>
                 </div>
             </div>
 
-            <!-- Manual Date/Time/Staff -->
             <div class="form-row">
                 <div class="form-group">
                     <label>Date <span class="required">*</span></label>
@@ -812,10 +799,25 @@
 
             <div class="form-row single">
                 <div class="form-group">
+                    <label>Passenger Name <span class="required">*</span></label>
+                    <div style="display:flex;gap:10px;">
+                        <select id="manualPaxTitle" style="width:110px;">
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Mdm">Mdm</option>
+                        </select>
+                        <input type="text" id="manualPaxName" placeholder="Full Name" style="flex:1;" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row single">
+                <div class="form-group">
                     <label>Staff Involved <span class="required">*</span></label>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;" id="manualStaffPills"></div>
-                    <select id="manualStaffSelect" style="margin-top:8px;" onchange="addManualStaff()">
-                        <option value="" selected>-- Add Staff --</option>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;min-height:36px;margin-bottom:8px;" id="manualStaffPills"></div>
+                    <select id="manualStaffSelect" onchange="addManualStaff()">
+                        <option value="" selected>-- Add Staff Member --</option>
                         <option value="29348|SSM Sam">SSM Sam</option>
                         <option value="28784|SM Zann">SM Zann</option>
                         <option value="30801|SM Kamhani">SM Kamhani</option>
@@ -839,12 +841,11 @@
                 </div>
             </div>
 
-            <!-- Prompt Box -->
             <div class="form-row single" style="margin-top:10px;">
                 <div class="form-group">
-                    <label>Describe the incident / what happened <span class="required">*</span></label>
+                    <label>Describe what happened <span class="required">*</span></label>
                     <textarea id="manualPrompt" rows="6"
-                        placeholder="e.g. A passenger approached our staff asking for help with the TUK machine. Staff patiently guided the passenger step by step..."></textarea>
+                        placeholder="Describe the incident in your own words. The more detail you give, the better the story will be..."></textarea>
                     <div class="char-count" id="charCount">0 / 1000</div>
                 </div>
             </div>
@@ -864,47 +865,47 @@
         </div>
     </div>
 
-</div><!-- /container -->
+</div>
 
 <script>
-// ════════════════════════════════════════════════════
-//  GROQ CONFIG  ⚠️ Regenerate this key — it's public!
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════
 const GROQ_API_KEY = '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';
 const GROQ_MODEL   = 'llama-3.3-70b-versatile';
 const GROQ_URL     = 'https://api.groq.com/openai/v1/chat/completions';
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  TAB SWITCHING
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 function switchTab(tab) {
-    document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
         b.classList.toggle('active', (i === 0 && tab === 'auto') || (i === 1 && tab === 'manual'));
     });
     document.getElementById('page-auto').classList.toggle('active', tab === 'auto');
     document.getElementById('page-manual').classList.toggle('active', tab === 'manual');
 }
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  DATE / TIME HELPERS
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 const MONTHS = ['January','February','March','April','May','June',
                 'July','August','September','October','November','December'];
 
 function formatDate(d) {
     if (!d) return '--';
-    const [y,m,day] = d.split('-');
+    const [y, m, day] = d.split('-');
     return `${String(parseInt(day)).padStart(2,'0')} ${MONTHS[parseInt(m)-1]} ${y}`;
 }
 
 function formatTime(t) {
     if (!t) return '--';
-    return t.replace(':','') + 'hrs';
+    return t.replace(':', '') + 'hrs';
 }
 
-// ════════════════════════════════════════════════════
-//  STAFF HELPERS (Auto page)
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  STAFF HELPERS — AUTO PAGE
+// ══════════════════════════════════════════
 function populateStaff(n) {
     const dd   = document.getElementById(`staffSelect${n}`);
     const name = document.getElementById(`staffName${n}`);
@@ -920,30 +921,46 @@ function populateStaff(n) {
     updateTemplatePreview();
 }
 
-function buildStaffInvolved() {
-    const parts = [];
+function getAutoStaffList() {
+    const list = [];
     for (let i = 1; i <= 4; i++) {
         const n = document.getElementById(`staffName${i}`).value.trim();
         const d = document.getElementById(`staffId${i}`).value.trim();
-        if (n && d) parts.push(`${n} ${d}`);
+        if (n && d) list.push({ name: n, id: d });
     }
-    return parts.length ? parts.join(', ') : '--';
+    return list;
 }
 
-// ════════════════════════════════════════════════════
-//  TEMPLATE PREVIEW (Auto page)
-// ════════════════════════════════════════════════════
+function buildStaffString(staffList) {
+    return staffList.map(s => `${s.name} ${s.id}`).join(', ') || '--';
+}
+
+// ══════════════════════════════════════════
+//  TOGGLE INCIDENT FIELDS
+// ══════════════════════════════════════════
+function toggleIncidentFields() {
+    const type = document.getElementById('incidentType').value;
+    const lostFields = document.getElementById('lostItemFields');
+    lostFields.style.display = (type === 'lost_item') ? 'block' : 'none';
+    updateTemplatePreview();
+}
+
+// ══════════════════════════════════════════
+//  TEMPLATE PREVIEW
+// ══════════════════════════════════════════
 function updateTemplatePreview() {
     const d = formatDate(document.getElementById('date').value);
     const t = formatTime(document.getElementById('time').value);
-    const s = buildStaffInvolved();
+    const staffList = getAutoStaffList();
+    const s = buildStaffString(staffList);
+
     document.getElementById('templatePreview').textContent =
 `Date : ${d}
 Time : ${t}
 Location : TE01 Woodlands North
 Staff Involved : ${s}
 
-(Generated Service Story will appear here)
+(AI-generated story will appear here — each generation is unique)
 
 #serviceexcellence
 #TELservicefromtheheart
@@ -956,9 +973,9 @@ Staff Involved : ${s}
 @Muhammad_Suhaimi_Bin_Jeffry`;
 }
 
-// ════════════════════════════════════════════════════
-//  BUILD FULL STORY WRAPPER
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  BUILD FULL STORY WITH HEADER + FOOTER
+// ══════════════════════════════════════════
 function buildFullStory(bodyText, dateStr, timeStr, staffStr) {
     return `Date : ${dateStr}
 Time : ${timeStr}
@@ -978,9 +995,9 @@ ${bodyText}
 @Muhammad_Suhaimi_Bin_Jeffry`;
 }
 
-// ════════════════════════════════════════════════════
-//  GROQ API CALLER
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  GROQ API
+// ══════════════════════════════════════════
 async function callGroq(systemPrompt, userPrompt) {
     const res = await fetch(GROQ_URL, {
         method: 'POST',
@@ -991,7 +1008,7 @@ async function callGroq(systemPrompt, userPrompt) {
         body: JSON.stringify({
             model: GROQ_MODEL,
             temperature: 1.1,
-            max_tokens: 700,
+            max_tokens: 800,
             messages: [
                 { role: 'system', content: systemPrompt },
                 { role: 'user',   content: userPrompt }
@@ -1006,89 +1023,125 @@ async function callGroq(systemPrompt, userPrompt) {
     return data.choices[0].message.content.trim();
 }
 
-// ════════════════════════════════════════════════════
-//  SYSTEM PROMPT FOR AUTO GENERATOR
-// ════════════════════════════════════════════════════
-function buildSystemPrompt() {
-    return `You are a professional service story writer for SMRT Woodlands North MRT Station (TE01) staff.
-Your job is to write a warm, natural, and engaging service excellence story for internal social media posts.
+// ══════════════════════════════════════════
+//  SYSTEM PROMPT
+// ══════════════════════════════════════════
+function getSystemPrompt() {
+    return `You are a professional service story writer for SMRT Woodlands North MRT Station (TE01) staff in Singapore.
 
-RULES:
-- Write in a warm, human, first-person plural perspective ("our staff", "our team").
-- Every story must feel DIFFERENT. Use varied sentence structures, different opening lines, different narrative styles each time.
-- Do NOT start with "In" or "At" every time — vary the opening.
-- Keep it between 4–7 sentences.
-- Sound natural and genuine, not robotic or repetitive.
-- Do NOT include dates, times, hashtags, or staff IDs — those are added separately.
-- Do NOT include any headers or labels.
-- Just write the story paragraph(s) only.`;
+Your task is to write a warm, natural, professional and engaging service excellence story for internal social media posts.
+
+STRICT RULES — follow every one of these:
+
+1. STRUCTURE: Write exactly 3 paragraphs separated by a blank line.
+   - Paragraph 1: Set the scene. Mention the date, time, location, and the FIRST staff member by name. Describe how the incident was discovered or how the passenger first made contact.
+   - Paragraph 2: Describe the actions taken. EVERY staff member listed must be mentioned by name at least once with a specific action or role they played. Be specific about what each person did.
+   - Paragraph 3: Describe the outcome and the passenger's reaction. End with a short motivational closing line praising the team. e.g. "Well done to the team for their professionalism and dedication to service!"
+
+2. NAMES: Use staff names exactly as provided (e.g. "ASM Zulfiqha", "SM Kamhani"). Never shorten, rename, or skip any staff.
+
+3. DATE & TIME: Always mention the date and time in paragraph 1 (e.g. "On 11 June 2026 at around 2130hrs").
+
+4. PASSENGER: Refer to the passenger by title and name (e.g. "Mr Lawrence") throughout.
+
+5. VARIATION: Every story must have a DIFFERENT opening sentence, different narrative flow, and different closing praise. Never repeat the same structure twice.
+
+6. TONE: Warm, genuine, professional. Like a proud supervisor sharing a team achievement.
+
+7. DO NOT include: dates/times in header format, hashtags, staff IDs, bullet points, or headers inside the story body. Just plain flowing paragraphs.
+
+8. LENGTH: Each paragraph should be 2–4 sentences. Total story: 8–14 sentences.`;
 }
 
-// ════════════════════════════════════════════════════
-//  AUTO GENERATOR FORM SUBMIT
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  AUTO GENERATOR SUBMIT
+// ══════════════════════════════════════════
 document.getElementById('storyForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const staff1 = document.getElementById('staffName1').value;
-    if (!staff1) {
-        showError('errorMsg', '❌ Please select at least Staff 1.');
-        return;
+    const staffList = getAutoStaffList();
+    if (!staffList.length) {
+        return showError('errorMsg', '❌ Please select at least Staff 1.');
     }
 
-    const incidentType   = document.getElementById('incidentType').value;
+    const incidentType = document.getElementById('incidentType').value;
     if (!incidentType) {
-        showError('errorMsg', '❌ Please select an incident type.');
-        return;
+        return showError('errorMsg', '❌ Please select an incident type.');
+    }
+
+    const paxName  = document.getElementById('passengerName').value.trim();
+    const paxTitle = document.getElementById('passengerTitle').value;
+    if (!paxName) {
+        return showError('errorMsg', '❌ Please enter the passenger name.');
     }
 
     const btn      = document.getElementById('btnGenerate');
     const btnText  = document.getElementById('btnText');
     const spinner  = document.getElementById('spinner');
-    const errorMsg = document.getElementById('errorMsg');
-    const resultCard = document.getElementById('resultCard');
+    const errEl    = document.getElementById('errorMsg');
+    const resCard  = document.getElementById('resultCard');
 
-    errorMsg.classList.remove('show');
-    resultCard.classList.remove('show');
+    errEl.classList.remove('show');
+    resCard.classList.remove('show');
     btn.disabled = true;
     btn.classList.add('loading');
     btnText.textContent = '🤖 Generating with Groq AI...';
     spinner.style.display = 'block';
 
     try {
-        const dateStr    = formatDate(document.getElementById('date').value);
-        const timeStr    = formatTime(document.getElementById('time').value);
-        const staffStr   = buildStaffInvolved();
-        const paxTitle   = document.getElementById('passengerTitle').value;
-        const paxName    = document.getElementById('passengerName').value;
-        const lostItem   = document.getElementById('lostItem').value;
-        const notes      = document.getElementById('additionalNotes').value;
+        const dateVal  = document.getElementById('date').value;
+        const timeVal  = document.getElementById('time').value;
+        const dateStr  = formatDate(dateVal);
+        const timeStr  = formatTime(timeVal);
+        const staffStr = buildStaffString(staffList);
+        const lostItem    = document.getElementById('lostItem').value.trim();
+        const itemLoc     = document.getElementById('itemLocation').value.trim();
+        const notes       = document.getElementById('additionalNotes').value.trim();
 
-        const incidentLabels = {
-            lost_item:        'Lost & Found Item',
-            drunk_passenger:  'Drunk Passenger Assistance',
-            sick_passenger:   'Sick Passenger Assistance',
-            tuk_machine:      'Staff Guiding Passenger to Use TUK Machine',
-            direction:        'Passenger Asking for Direction',
-            other:            'General Service Compliment'
+        const incidentDescriptions = {
+            lost_item:       'Lost & Found Item',
+            drunk_passenger: 'Drunk Passenger Assistance',
+            sick_passenger:  'Sick Passenger Medical Assistance',
+            tuk_machine:     'Staff Guiding Passenger to Use TUK Ticketing Machine',
+            direction:       'Passenger Asking for Directions',
+            other:           'General Service Excellence / Compliment'
         };
 
-        const userPrompt = `Write a service excellence story for this incident:
-- Incident Type: ${incidentLabels[incidentType] || incidentType}
-- Passenger: ${paxTitle} ${paxName}
-- Staff Involved: ${staffStr}
-- Location: TE01 Woodlands North MRT Station
-${lostItem ? `- Item: ${lostItem}` : ''}
-${notes ? `- Additional details: ${notes}` : ''}
+        // Build staff roles context for AI
+        const staffContext = staffList.map((s, i) => {
+            if (i === 0) return `${s.name} (primary staff — first to respond)`;
+            return `${s.name} (supporting staff — assisted during the incident)`;
+        }).join('\n');
 
-Make the story warm, natural, and different from previous ones. Vary the style and opening line.`;
+        const userPrompt = `Write a service excellence story with the following details:
 
-        const storyBody = await callGroq(buildSystemPrompt(), userPrompt);
+DATE: ${dateStr}
+TIME: ${timeStr}
+LOCATION: TE01 Woodlands North MRT Station
+INCIDENT TYPE: ${incidentDescriptions[incidentType] || incidentType}
+PASSENGER: ${paxTitle} ${paxName}
+${lostItem ? `ITEM: ${lostItem}` : ''}
+${itemLoc  ? `WHERE ITEM WAS FOUND: ${itemLoc}` : ''}
+${notes    ? `ADDITIONAL CONTEXT: ${notes}` : ''}
+
+STAFF (mention ALL by name with specific roles):
+${staffContext}
+
+STAFF INVOLVED LINE (use exactly): ${staffStr}
+
+Important reminders:
+- Mention the date and time in paragraph 1
+- Every staff member must appear by name in paragraph 2 with a specific action
+- Passenger must be referred to as "${paxTitle} ${paxName}" throughout
+- Make the story feel natural and warm — not robotic
+- Vary the writing style and opening line uniquely`;
+
+        const storyBody = await callGroq(getSystemPrompt(), userPrompt);
         const fullStory = buildFullStory(storyBody, dateStr, timeStr, staffStr);
 
         document.getElementById('storyText').textContent = fullStory;
-        resultCard.classList.add('show');
-        resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        resCard.classList.add('show');
+        resCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch (err) {
         showError('errorMsg', '❌ Error: ' + err.message);
@@ -1100,9 +1153,9 @@ Make the story warm, natural, and different from previous ones. Vary the style a
     }
 });
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  MANUAL STAFF PILLS
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 let manualStaffList = [];
 
 function addManualStaff() {
@@ -1125,69 +1178,68 @@ function removeManualStaff(id) {
 
 function renderManualStaffPills() {
     const container = document.getElementById('manualStaffPills');
-    container.innerHTML = manualStaffList.map(s => `
+    if (!manualStaffList.length) {
+        container.innerHTML = '<span style="color:#5a7a8a;font-size:0.85em;">No staff added yet...</span>';
+        return;
+    }
+    container.innerHTML = manualStaffList.map((s, i) => `
         <span style="
             display:inline-flex;align-items:center;gap:6px;
             background:rgba(0,180,216,0.15);
             border:1px solid rgba(0,180,216,0.4);
             border-radius:20px;padding:5px 12px;
             font-size:0.83em;color:#00b4d8;">
-            ${s.name} <span style="font-size:0.75em;color:#7eb8d0;">${s.id}</span>
+            ${i === 0 ? '⭐ ' : ''}${s.name}
+            <span style="font-size:0.75em;color:#7eb8d0;">${s.id}</span>
             <span onclick="removeManualStaff('${s.id}')"
-                style="cursor:pointer;color:#ff6b6b;margin-left:2px;font-weight:bold;">✕</span>
+                style="cursor:pointer;color:#ff6b6b;margin-left:2px;font-weight:bold;font-size:1.1em;">✕</span>
         </span>`).join('');
 }
 
-function buildManualStaffStr() {
-    return manualStaffList.map(s => `${s.name} ${s.id}`).join(', ') || '--';
-}
-
-// ════════════════════════════════════════════════════
-//  QUICK TEMPLATE FILLER (Manual page)
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
+//  QUICK TEMPLATES
+// ══════════════════════════════════════════
 const TEMPLATES = {
-    drunk: `A passenger was found in an intoxicated state near the platform area. Our staff noticed the passenger and immediately approached to ensure their safety. Staff assisted the passenger to a safe seating area, monitored their condition, and offered water. The passenger was attended to until they were stable and able to continue their journey safely.`,
-
-    sick: `A passenger was seen feeling unwell near the concourse area. Our staff quickly approached the passenger, who was visibly dizzy and pale. Staff assisted the passenger to a resting area, provided first aid support, and contacted the relevant authorities to ensure the passenger received proper medical attention. The passenger expressed heartfelt gratitude for the timely help.`,
-
-    tuk: `A passenger approached our staff, unsure of how to use the TUK machine to purchase a ticket. Our staff warmly welcomed the passenger and patiently guided them through each step of the process, ensuring they understood how to select their destination and make payment. The passenger was appreciative of the clear and friendly assistance provided.`,
-
-    direction: `A passenger approached our staff looking confused about which exit to take to reach their destination. Our staff greeted the passenger with a smile and provided clear, step-by-step directions, including which bus connections to take. The passenger thanked our staff for the warm and helpful guidance.`,
-
-    lost: `A passenger approached our staff in a worried state, having left behind a personal belonging on the train. Our staff immediately took action by checking with the relevant team and coordinating efforts to locate the item. The item was successfully retrieved, and the passenger was overjoyed and deeply grateful for the swift assistance provided by our dedicated team.`,
-
-    custom: ``
+    drunk:     `A passenger was found in an intoxicated state near the platform area and was unsteady on their feet. Staff noticed the passenger and immediately approached to ensure their safety, guiding them to a safe seating area. Staff monitored the passenger throughout and offered assistance until the passenger was stable enough to continue their journey.`,
+    sick:      `A passenger was seen feeling unwell near the concourse area, appearing dizzy and pale. Staff quickly approached and provided immediate assistance, guiding the passenger to a comfortable resting spot and providing first aid. The relevant authorities were contacted and the passenger received proper attention before recovering and continuing their journey.`,
+    tuk:       `A passenger approached staff looking confused about how to purchase a ticket at the TUK machine. Staff warmly approached the passenger and patiently guided them step by step through the process, from selecting their destination to completing the payment. The passenger was appreciative of the clear, friendly and thorough assistance provided.`,
+    direction: `A passenger approached staff looking uncertain about which exit to take and how to get to their destination. Staff greeted the passenger warmly and provided clear, step-by-step directions including which bus services to board and where to alight. The passenger was very thankful for the helpful and friendly guidance provided.`,
+    lost:      `A passenger approached staff in a worried state, having realised they had left behind a personal belonging somewhere in the station. Staff immediately took action to locate the item and coordinated with the team to ensure it was found and secured. The item was successfully retrieved and returned to the relieved and grateful passenger.`,
+    custom:    ``
 };
 
-function fillTemplate(key) {
+function fillTemplate(key, btn) {
     document.querySelectorAll('.tpl-btn').forEach(b => b.classList.remove('selected'));
-    event.target.classList.add('selected');
+    btn.classList.add('selected');
     const ta = document.getElementById('manualPrompt');
     ta.value = TEMPLATES[key];
     updateCharCount();
     ta.focus();
 }
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  CHAR COUNT
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 document.getElementById('manualPrompt').addEventListener('input', updateCharCount);
 function updateCharCount() {
     const len = document.getElementById('manualPrompt').value.length;
     document.getElementById('charCount').textContent = `${len} / 1000`;
 }
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  MANUAL STORY GENERATOR
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 async function generateManualStory() {
-    const prompt = document.getElementById('manualPrompt').value.trim();
-    const dateVal = document.getElementById('manualDate').value;
-    const timeVal = document.getElementById('manualTime').value;
+    const prompt   = document.getElementById('manualPrompt').value.trim();
+    const dateVal  = document.getElementById('manualDate').value;
+    const timeVal  = document.getElementById('manualTime').value;
+    const paxTitle = document.getElementById('manualPaxTitle').value;
+    const paxName  = document.getElementById('manualPaxName').value.trim();
 
-    if (!prompt) return showError('errorMsgManual', '❌ Please describe the incident or select a quick template.');
-    if (!dateVal) return showError('errorMsgManual', '❌ Please select a date.');
-    if (!timeVal) return showError('errorMsgManual', '❌ Please select a time.');
+    if (!prompt)               return showError('errorMsgManual', '❌ Please describe the incident or select a quick template.');
+    if (!dateVal)              return showError('errorMsgManual', '❌ Please select a date.');
+    if (!timeVal)              return showError('errorMsgManual', '❌ Please select a time.');
+    if (!paxName)              return showError('errorMsgManual', '❌ Please enter the passenger name.');
     if (!manualStaffList.length) return showError('errorMsgManual', '❌ Please add at least one staff member.');
 
     const btn     = document.getElementById('btnManual');
@@ -1206,30 +1258,36 @@ async function generateManualStory() {
     try {
         const dateStr  = formatDate(dateVal);
         const timeStr  = formatTime(timeVal);
-        const staffStr = buildManualStaffStr();
+        const staffStr = buildStaffString(manualStaffList);
 
-        const systemPrompt = `You are a professional service story writer for SMRT Woodlands North MRT Station (TE01) staff.
-Your job is to rewrite and enhance the given incident description into a warm, natural, and engaging service excellence story for internal social media posts.
+        const staffContext = manualStaffList.map((s, i) => {
+            if (i === 0) return `${s.name} (primary staff — first to respond)`;
+            return `${s.name} (supporting staff — assisted during the incident)`;
+        }).join('\n');
 
-RULES:
-- Write in warm, human, first-person plural ("our staff", "our team").
-- Each story must feel UNIQUE. Use varied sentence structure, opening lines, and narrative style.
-- Keep it between 4–7 sentences.
-- Sound genuine and heartfelt, not corporate or robotic.
-- Do NOT include dates, times, hashtags, staff IDs — those are added separately.
-- Do NOT include headers or labels.
-- Return only the story paragraph(s).`;
+        const userPrompt = `Rewrite and enhance the following incident description into a professional service excellence story.
 
-        const userPrompt = `Rewrite this into a polished, natural service story:
+DATE: ${dateStr}
+TIME: ${timeStr}
+LOCATION: TE01 Woodlands North MRT Station
+PASSENGER: ${paxTitle} ${paxName}
 
+INCIDENT DESCRIPTION:
 "${prompt}"
 
-Staff involved: ${staffStr}
-Location: TE01 Woodlands North MRT Station
+STAFF (mention ALL by name with specific roles):
+${staffContext}
 
-Make it warm, engaging, and varied in style.`;
+STAFF INVOLVED LINE (use exactly): ${staffStr}
 
-        const storyBody = await callGroq(systemPrompt, userPrompt);
+Important:
+- Mention the date and time in paragraph 1
+- Every staff member must appear by name in paragraph 2 with a specific action they took
+- Refer to the passenger as "${paxTitle} ${paxName}" throughout
+- 3 paragraphs, warm and professional tone
+- Make each generation feel unique and natural`;
+
+        const storyBody = await callGroq(getSystemPrompt(), userPrompt);
         const fullStory = buildFullStory(storyBody, dateStr, timeStr, staffStr);
 
         document.getElementById('storyTextManual').textContent = fullStory;
@@ -1246,63 +1304,69 @@ Make it warm, engaging, and varied in style.`;
     }
 }
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  COPY STORY
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 function copyStory(elId) {
     const text = document.getElementById(elId).textContent;
     navigator.clipboard.writeText(text).then(() => {
-        const btn = event.target;
+        const btn  = event.target;
         const orig = btn.textContent;
         btn.textContent = '✅ Copied!';
         setTimeout(() => btn.textContent = orig, 2000);
     });
 }
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  ERROR HELPER
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 function showError(elId, msg) {
     const el = document.getElementById(elId);
     el.textContent = msg;
     el.classList.add('show');
-    setTimeout(() => el.classList.remove('show'), 5000);
+    setTimeout(() => el.classList.remove('show'), 6000);
 }
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  IMAGE PREVIEWS
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 document.getElementById('passengerPhoto').addEventListener('change', function(e) {
     previewImage(e.target.files[0], 'previewPassenger');
 });
 document.getElementById('complimentLetter').addEventListener('change', function(e) {
     previewImage(e.target.files[0], 'previewCompliment');
 });
-function previewImage(file, previewId) {
+function previewImage(file, id) {
     if (!file) return;
     const reader = new FileReader();
     reader.onload = ev => {
-        const img = document.getElementById(previewId);
-        img.src = ev.target.result;
+        const img = document.getElementById(id);
+        img.src   = ev.target.result;
         img.classList.add('show');
     };
     reader.readAsDataURL(file);
 }
 
-// ════════════════════════════════════════════════════
+// ══════════════════════════════════════════
 //  INIT
-// ════════════════════════════════════════════════════
-document.getElementById('date').valueAsDate = new Date();
+// ══════════════════════════════════════════
+document.getElementById('date').valueAsDate      = new Date();
 document.getElementById('manualDate').valueAsDate = new Date();
 
 const now = new Date();
-const hh  = String(now.getHours()).padStart(2,'0');
-const mm  = String(now.getMinutes()).padStart(2,'0');
+const hh  = String(now.getHours()).padStart(2, '0');
+const mm  = String(now.getMinutes()).padStart(2, '0');
 document.getElementById('time').value       = `${hh}:${mm}`;
 document.getElementById('manualTime').value = `${hh}:${mm}`;
 
 document.getElementById('date').addEventListener('change', updateTemplatePreview);
 document.getElementById('time').addEventListener('change', updateTemplatePreview);
+
+// Hide lost item fields by default
+document.getElementById('lostItemFields').style.display = 'none';
+
+// Init staff pills placeholder
+renderManualStaffPills();
 
 updateTemplatePreview();
 </script>
